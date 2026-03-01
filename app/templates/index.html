@@ -4,6 +4,10 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
+  * {
+    box-sizing: border-box;
+  }
+
   html, body {
     margin: 0;
     padding: 0;
@@ -20,50 +24,178 @@
     height: 100% !important;
   }
 
+  /* ========== LAYOUT GRID ========== */
   .app-shell {
     width: 100vw;
     height: 100vh;
     background: #0a0a0a;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr;
     padding: 0;
-    box-sizing: border-box;
+    gap: 0;
   }
 
+  /* Professional spacing and shadow */
   .app-viewport {
-    flex: 1;
+    grid-row: 2;
+    grid-column: 1;
     display: flex;
-    min-height: 0;
-    min-width: 0;
-    padding: 12px;
-    box-sizing: border-box;
-    background: radial-gradient(circle at top left, #0f172a 0%, #0a0a0a 35%);
+    gap: 12px;
+    padding: 16px;
+    background: radial-gradient(circle at top left, #0f172a 0%, #0a0a0a 40%);
+    overflow: hidden;
   }
 
   .canvas-wrap {
     flex: 1;
     display: flex;
+    flex-direction: column;
     min-width: 0;
     min-height: 0;
     border: 1px solid #1f2937;
     border-radius: 12px;
     overflow: hidden;
     background: #0b0f16;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
   }
 
-  /* Cleaner widgets */
+  /* ========== WIDGET STYLING ========== */
   .bk-input, .bk-slider-title, .bk-input-group, .bk-btn {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  }
+
+  /* Fix Select (dropdown) visibility */
+  .bk-root .bk-input-group.bk-inline-block select {
+    background-color: #1a1a1a !important;
+    border: 1px solid #333 !important;
+    color: #fff !important;
+    padding: 8px 12px !important;
+    border-radius: 6px !important;
+  }
+
+  .bk-root .bk-input-group.bk-inline-block select option {
+    background-color: #1a1a1a !important;
+    color: #fff !important;
+    padding: 8px 12px !important;
+  }
+
+  .bk-root .bk-input-group.bk-inline-block select option:hover,
+  .bk-root .bk-input-group.bk-inline-block select option:checked {
+    background-color: #00ff41 !important;
+    color: #000 !important;
+  }
+
+  /* TextInput visibility */
+  .bk-root input[type="text"] {
+    background-color: #111 !important;
+    border: 1px solid #333 !important;
+    color: #fff !important;
+    padding: 10px 12px !important;
+    border-radius: 6px !important;
+    font-size: 13px !important;
+  }
+
+  .bk-root input[type="text"]::placeholder {
+    color: #666 !important;
+  }
+
+  .bk-root input[type="text"]:focus {
+    border-color: #00ff41 !important;
+    box-shadow: 0 0 0 2px rgba(0, 255, 65, 0.1) !important;
+  }
+
+  /* Slider styling */
+  .bk-root .bk-slider {
+    background: #111 !important;
+  }
+
+  .bk-root .bk-slider-horizontal {
+    height: 6px !important;
+  }
+
+  .bk-root .bk-slider-handle {
+    background: #00ff41 !important;
+    border: none !important;
+    width: 14px !important;
+    height: 14px !important;
+    top: -4px !important;
+  }
+
+  /* Button styling */
+  .bk-root .bk-btn {
+    background-color: #00ff41 !important;
+    color: #000 !important;
+    border: none !important;
+    font-weight: 600 !important;
+    padding: 10px 16px !important;
+    border-radius: 6px !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+  }
+
+  .bk-root .bk-btn:hover {
+    background-color: #00dd36 !important;
+    box-shadow: 0 4px 12px rgba(0, 255, 65, 0.3) !important;
+  }
+
+  /* ========== SCROLLBARS ========== */
+  .bk-root > div:nth-child(2) > div > div:first-child {
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .bk-root > div:nth-child(2) > div > div:first-child::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .bk-root > div:nth-child(2) > div > div:first-child::-webkit-scrollbar-track {
+    background: #0a0a0a;
+  }
+
+  .bk-root > div:nth-child(2) > div > div:first-child::-webkit-scrollbar-thumb {
+    background: #00ff41;
+    border-radius: 3px;
+  }
+
+  .bk-root > div:nth-child(2) > div > div:first-child::-webkit-scrollbar-thumb:hover {
+    background: #00dd36;
+  }
+
+  /* Stats panel scrollbar */
+  .bk-root > div:nth-child(2) > div > div:last-child::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .bk-root > div:nth-child(2) > div > div:last-child::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .bk-root > div:nth-child(2) > div > div:last-child::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 2px;
+  }
+
+  /* ========== LABELS & TEXT ========== */
+  .bk-root .bk-input-group label {
+    color: #9ca3af !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    margin-bottom: 8px !important;
+  }
+
+  /* Ensure divs render properly */
+  .bk-root > div:nth-child(2) {
+    min-height: 0;
+    min-width: 0;
   }
 </style>
 {% endblock %}
 
 {% block contents %}
 <div class="app-shell">
-  <div class="app-viewport">
-    <div class="canvas-wrap">
-      {{ embed(roots.app_root) }}
-    </div>
-  </div>
+  {{ embed(roots.app_root) }}
 </div>
 {% endblock %}

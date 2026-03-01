@@ -39,8 +39,12 @@ def classify_player_role(name, betweenness, in_degree, position_x, position_y):
             return "Winger"
 
 def compute_comparative_metrics():
-    teams = ["Spain", "England", "France", "Netherlands"]
+    # Dynamically read all teams from the CSV data
     df = pd.read_csv("data/raw_passes.csv")
+    teams = sorted(df['team'].unique().tolist())
+    
+    print(f"📊 Found {len(teams)} teams in dataset")
+    print(f"   Teams: {', '.join(teams)}\n")
     
     for team in teams:
         print(f"🔍 Computing comprehensive metrics for {team}...")
