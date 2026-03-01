@@ -1,0 +1,17 @@
+# Environments
+.env
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Cached Data (Keep your repo lightweight)
+data/
+*.csv
+*.json
+
+# OS generated files
+.DS_Store
+Thumbs.db
