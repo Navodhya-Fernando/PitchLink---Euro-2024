@@ -19,11 +19,15 @@ def load_network_data():
     print("📊 Loading network with community detection...")
     
     # Load dataset
-    base_path = os.path.dirname(os.path.abspath(__file__))
-    csv_path = os.path.join(os.path.dirname(base_path), "data", "raw_passes.csv")
-    if not os.path.exists(csv_path):
-        raise FileNotFoundError(f"Could not find data at {csv_path}. Current working dir is {os.getcwd()}")
-    df = pd.read_csv(csv_path)
+    CURRENT_DIR = os.path.dirname(__file__)
+    csv_path = os.path.join(CURRENT_DIR, '..', 'data', 'raw_passes.csv')
+    
+    try:
+        df = pd.read_csv(csv_path)
+    except FileNotFoundError:
+        # Fallback for different environments
+        csv_path = os.path.join('data', 'raw_passes.csv')
+        df = pd.read_csv(csv_path)
     
     # Build NetworkX Multi-DiGraph (for accurate PageRank) to compute metrics
     edges_df = df.groupby(['passer', 'recipient', 'team']).agg({
