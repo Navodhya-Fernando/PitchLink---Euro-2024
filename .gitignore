@@ -8,8 +8,10 @@ __pycache__/
 .ipynb_checkpoints/
 
 # Cached Data (Keep your repo lightweight)
-data/
+data/*
+!data/raw_passes.csv
 *.csv
+!app/*.csv
 *.json
 
 # OS generated files
