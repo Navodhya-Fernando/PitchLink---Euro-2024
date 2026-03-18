@@ -1,0 +1,7 @@
+nohup: ignoring input
+2026-03-18 17:42:37,974 Starting Bokeh server version 3.3.4 (running on Tornado 6.5.1)
+2026-03-18 17:42:37,975 User authentication hooks NOT provided (default user enabled)
+2026-03-18 17:42:37,976 Bokeh app running at: http://localhost:5006/app
+2026-03-18 17:42:37,976 Starting Bokeh server with process id: 39126
+2026-03-18 17:42:49,936 W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: Column(id='p1158', ...)
+2026-03-18 18:10:00,841 405 HEAD /app (::1) 0.39ms
