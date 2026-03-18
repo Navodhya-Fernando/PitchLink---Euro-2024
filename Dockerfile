@@ -8,7 +8,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-# Expose the default Bokeh port
-EXPOSE 5006
-
-CMD ["bokeh", "serve", "--port", "5006", "--address", "0.0.0.0", "--allow-websocket-origin=*", "app"]
+# Handle dynamic ports for platforms like Render, Railway, etc.
+CMD ["sh", "-c", "bokeh serve --port ${PORT:-5006} --address 0.0.0.0 --allow-websocket-origin=* app"]

@@ -484,10 +484,18 @@ search_js = CustomJS(args=dict(nodes=nodes_source, search=player_search), code="
     const query = search.value;
     
     if (query !== "") {
-        const idx = data['name'].indexOf(query);
+        const names = Array.from(data['name']);
+        const idx = names.indexOf(query);
         if (idx !== -1) {
             nodes.selected.indices = [idx];
+            nodes.selected.change.emit();
+            // Force tap_js to run by emitting if it didn't catch
+            nodes.change.emit();
         }
+    } else {
+        nodes.selected.indices = [];
+        nodes.selected.change.emit();
+        nodes.change.emit();
     }
 """)
 
@@ -509,7 +517,6 @@ sidebar = column(
     Spacer(height=10),
     Div(text="<h3 style='color:#00ff41; font-size:14px; margin-bottom:5px; margin-top:10px; letter-spacing: 1px; border-bottom: 1px solid #333; padding-bottom: 5px; text-transform: uppercase;'>Unit Roster</h3>"),
     leaderboard,
-    sizing_mode="fixed", 
     width=340,
     spacing=15,
     styles={"background": "linear-gradient(180deg, #121212 0%, #0a0a0a 100%)", "border-right": "1px solid rgba(255,255,255,0.05)", "overflow-y": "auto", "padding": "25px", "box-shadow": "5px 0 20px rgba(0,0,0,0.8)"}
