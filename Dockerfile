@@ -9,4 +9,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Handle dynamic ports for platforms like Render, Railway, etc.
-CMD ["sh", "-c", "bokeh serve --port ${PORT:-5006} --address 0.0.0.0 --allow-websocket-origin=* app"]
+CMD ["sh", "-c", "cd app && bokeh serve . --port ${PORT:-5006} --address 0.0.0.0 --allow-websocket-origin=* --use-xheaders"]
