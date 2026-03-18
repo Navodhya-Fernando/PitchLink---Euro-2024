@@ -310,7 +310,7 @@ teams = sorted(list(set(nodes_source.data['team'])))
 team_select = Select(
     title="Isolate Team", 
     options=["All"] + teams,
-    value="Spain" if "Spain" in teams else "All", 
+    value="All", 
     width=270
 )
 
@@ -319,6 +319,7 @@ player_search = AutocompleteInput(
     title="Search Player", 
     completions=all_players,
     value="",
+    placeholder="e.g., Toni Kroos",
     width=270
 )
 

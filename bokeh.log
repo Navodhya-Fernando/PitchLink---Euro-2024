@@ -9,10 +9,10 @@ call "bokeh serve" on the directory instead. For example:
 If this is not the case, renaming main.py will suppress this warning.
 
   sys.exit(main())
-2026-03-18 11:14:14,205 Starting Bokeh server version 3.3.4 (running on Tornado 6.5.1)
-2026-03-18 11:14:14,206 User authentication hooks NOT provided (default user enabled)
-2026-03-18 11:14:14,207 Bokeh app running at: http://localhost:5006/main
-2026-03-18 11:14:14,208 Starting Bokeh server with process id: 18157
-2026-03-18 11:14:56,007 W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: Column(id='p1158', ...)
-2026-03-18 11:14:56,195 WebSocket connection opened
-2026-03-18 11:14:56,195 ServerConnection created
+2026-03-18 11:38:16,866 Starting Bokeh server version 3.3.4 (running on Tornado 6.5.1)
+2026-03-18 11:38:16,867 User authentication hooks NOT provided (default user enabled)
+2026-03-18 11:38:16,870 Bokeh app running at: http://localhost:5006/main
+2026-03-18 11:38:16,870 Starting Bokeh server with process id: 23395
+2026-03-18 11:51:24,432 W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: Column(id='p1158', ...)
+2026-03-18 11:51:24,666 WebSocket connection opened
+2026-03-18 11:51:24,666 ServerConnection created
