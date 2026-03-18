@@ -16,3 +16,8 @@ If this is not the case, renaming main.py will suppress this warning.
 2026-03-18 11:51:24,432 W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: Column(id='p1158', ...)
 2026-03-18 11:51:24,666 WebSocket connection opened
 2026-03-18 11:51:24,666 ServerConnection created
+📊 Loading network with community detection...
+   Network built: 172 players, 1271 undirected edges
+   Detecting tactical units...
+✅ Network loaded: 172 nodes, 1271 edges
+Received signal 15, shutting down
