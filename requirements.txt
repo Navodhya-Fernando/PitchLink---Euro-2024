@@ -3,3 +3,4 @@ bokeh>=3.3.0
 numpy
 python-louvain
 networkx>=3.0
+scipy
