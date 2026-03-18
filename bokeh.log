@@ -1,1 +1,18 @@
 nohup: ignoring input
+/home/navodhya/anaconda3/bin/bokeh:7: UserWarning: 
+It looks like you might be running the main.py of a directory app directly.
+If this is the case, to enable the features of directory style apps, you must
+call "bokeh serve" on the directory instead. For example:
+
+    bokeh serve my_app_dir/
+
+If this is not the case, renaming main.py will suppress this warning.
+
+  sys.exit(main())
+2026-03-18 11:14:14,205 Starting Bokeh server version 3.3.4 (running on Tornado 6.5.1)
+2026-03-18 11:14:14,206 User authentication hooks NOT provided (default user enabled)
+2026-03-18 11:14:14,207 Bokeh app running at: http://localhost:5006/main
+2026-03-18 11:14:14,208 Starting Bokeh server with process id: 18157
+2026-03-18 11:14:56,007 W-1005 (FIXED_SIZING_MODE): 'fixed' sizing mode requires width and height to be set: Column(id='p1158', ...)
+2026-03-18 11:14:56,195 WebSocket connection opened
+2026-03-18 11:14:56,195 ServerConnection created

@@ -2,200 +2,113 @@
 
 {% block postamble %}
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-
-  * {
-    box-sizing: border-box;
-  }
-
-  html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    background: #0a0a0a;
-    color: #e5e7eb;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  html, body { 
+    background: radial-gradient(circle at top right, #001f11, #080808) !important;
+    margin: 0; padding: 0; 
+    width: 100vw; height: 100vh; 
     overflow: hidden;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: #cbd5e1;
   }
-
-  .bk-root {
-    width: 100% !important;
-    height: 100% !important;
-  }
-
-  /* ========== LAYOUT GRID ========== */
-  .app-shell {
-    width: 100vw;
-    height: 100vh;
-    background: #0a0a0a;
-    display: grid;
-    grid-template-rows: auto 1fr;
-    grid-template-columns: 1fr;
-    padding: 0;
-    gap: 0;
-  }
-
-  /* Professional spacing and shadow */
-  .app-viewport {
-    grid-row: 2;
-    grid-column: 1;
-    display: flex;
-    gap: 12px;
-    padding: 16px;
-    background: radial-gradient(circle at top left, #0f172a 0%, #0a0a0a 40%);
-    overflow: hidden;
-  }
-
-  .canvas-wrap {
-    flex: 1;
+  .bk-root { 
+    width: 100% !important; 
+    height: 100% !important; 
     display: flex;
     flex-direction: column;
-    min-width: 0;
-    min-height: 0;
-    border: 1px solid #1f2937;
-    border-radius: 12px;
-    overflow: hidden;
-    background: #0b0f16;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
   }
-
-  /* ========== WIDGET STYLING ========== */
-  .bk-input, .bk-slider-title, .bk-input-group, .bk-btn {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  
+  /* Prevent Tooltip Overlap - Critical Fix */
+  .bk-tooltip {
+    pointer-events: none !important;
+    z-index: 9999 !important;
+    opacity: 1 !important;
   }
-
-  /* Fix Select (dropdown) visibility */
-  .bk-root .bk-input-group.bk-inline-block select {
-    background-color: #1a1a1a !important;
-    border: 1px solid #333 !important;
-    color: #fff !important;
-    padding: 8px 12px !important;
-    border-radius: 6px !important;
-  }
-
-  .bk-root .bk-input-group.bk-inline-block select option {
-    background-color: #1a1a1a !important;
-    color: #fff !important;
-    padding: 8px 12px !important;
-  }
-
-  .bk-root .bk-input-group.bk-inline-block select option:hover,
-  .bk-root .bk-input-group.bk-inline-block select option:checked {
-    background-color: #00ff41 !important;
-    color: #000 !important;
-  }
-
-  /* TextInput visibility */
-  .bk-root input[type="text"] {
-    background-color: #111 !important;
-    border: 1px solid #333 !important;
-    color: #fff !important;
-    padding: 10px 12px !important;
-    border-radius: 6px !important;
-    font-size: 13px !important;
-  }
-
-  .bk-root input[type="text"]::placeholder {
-    color: #666 !important;
-  }
-
-  .bk-root input[type="text"]:focus {
-    border-color: #00ff41 !important;
-    box-shadow: 0 0 0 2px rgba(0, 255, 65, 0.1) !important;
-  }
-
-  /* Slider styling */
-  .bk-root .bk-slider {
-    background: #111 !important;
-  }
-
-  .bk-root .bk-slider-horizontal {
-    height: 6px !important;
-  }
-
-  .bk-root .bk-slider-handle {
-    background: #00ff41 !important;
-    border: none !important;
-    width: 14px !important;
-    height: 14px !important;
-    top: -4px !important;
-  }
-
-  /* Button styling */
-  .bk-root .bk-btn {
-    background-color: #00ff41 !important;
-    color: #000 !important;
-    border: none !important;
-    font-weight: 600 !important;
-    padding: 10px 16px !important;
-    border-radius: 6px !important;
-    cursor: pointer !important;
-    transition: all 0.2s ease !important;
-  }
-
-  .bk-root .bk-btn:hover {
-    background-color: #00dd36 !important;
-    box-shadow: 0 4px 12px rgba(0, 255, 65, 0.3) !important;
-  }
-
-  /* ========== SCROLLBARS ========== */
-  .bk-root > div:nth-child(2) > div > div:first-child {
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
-
-  .bk-root > div:nth-child(2) > div > div:first-child::-webkit-scrollbar {
-    width: 6px;
-  }
-
-  .bk-root > div:nth-child(2) > div > div:first-child::-webkit-scrollbar-track {
-    background: #0a0a0a;
-  }
-
-  .bk-root > div:nth-child(2) > div > div:first-child::-webkit-scrollbar-thumb {
-    background: #00ff41;
-    border-radius: 3px;
-  }
-
-  .bk-root > div:nth-child(2) > div > div:first-child::-webkit-scrollbar-thumb:hover {
-    background: #00dd36;
-  }
-
-  /* Stats panel scrollbar */
-  .bk-root > div:nth-child(2) > div > div:last-child::-webkit-scrollbar {
-    width: 4px;
-  }
-
-  .bk-root > div:nth-child(2) > div > div:last-child::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  .bk-root > div:nth-child(2) > div > div:last-child::-webkit-scrollbar-thumb {
-    background: #333;
-    border-radius: 2px;
-  }
-
-  /* ========== LABELS & TEXT ========== */
-  .bk-root .bk-input-group label {
-    color: #9ca3af !important;
-    font-size: 12px !important;
-    font-weight: 600 !important;
+  
+  /* Style Slider Labels - Live Green Theme */
+  .bk-slider-title, .bk-input-group label {
+    color: #38bdf8 !important; /* Premium cyan instead of neon green */
+    font-weight: 700 !important;
     text-transform: uppercase !important;
-    letter-spacing: 0.5px !important;
-    margin-bottom: 8px !important;
+    font-size: 12px !important;
+    letter-spacing: 1px !important;
+    margin-bottom: 6px !important;
   }
-
-  /* Ensure divs render properly */
-  .bk-root > div:nth-child(2) {
-    min-height: 0;
-    min-width: 0;
+  
+  /* Modern Widget Styling */
+  .bk-input { 
+    background: rgba(30, 41, 59, 0.7) !important;
+    backdrop-filter: blur(8px) !important;
+    color: #f8fafc !important; 
+    border: 1px solid rgba(56, 189, 248, 0.3) !important; 
+    border-radius: 8px !important; 
+    padding: 10px 12px !important;
+    font-size: 14px !important;
+    transition: all 0.3s ease !important;
+  }
+  
+  .bk-input:focus {
+    border-color: #38bdf8 !important;
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.3) !important;
+    outline: none !important;
+  }
+  
+  /* DataTable Styling - Dark Theme */
+  .bk-data-table { 
+    background: rgba(15, 23, 42, 0.6) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+  }
+  
+  .slick-header-column { 
+    background: rgba(30, 41, 59, 0.9) !important; 
+    color: #38bdf8 !important; 
+    font-weight: 800 !important; 
+    text-transform: uppercase !important;
+    font-size: 11px !important;
+    letter-spacing: 1px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
+  
+  .slick-cell { 
+    background: transparent !important; 
+    color: #e2e8f0 !important; 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03) !important;
+    border-right: none !important;
+    font-size: 13px !important;
+    padding: 8px !important;
+    transition: background 0.2s ease !important;
+  }
+  
+  .slick-row:hover .slick-cell {
+    background: rgba(56, 189, 248, 0.1) !important;
+    color: #fff !important;
+  }
+  
+  /* Custom Scrollbar for a polished look */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2); 
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(56, 189, 248, 0.3); 
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(56, 189, 248, 0.6); 
+  }
+  
+  /* Canvas Cursor */
+  canvas { 
+    cursor: crosshair !important; 
   }
 </style>
 {% endblock %}
 
 {% block contents %}
-<div class="app-shell">
   {{ embed(roots.app_root) }}
-</div>
 {% endblock %}

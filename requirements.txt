@@ -1,6 +1,6 @@
 # Data Extraction & Manipulation
 statsbombpy==1.13.0
-pandas==2.2.0
+pandas>=2.2.0
 
 # Graph Database Connection
 py2neo==2021.2.4
