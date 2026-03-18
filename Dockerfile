@@ -11,4 +11,4 @@ COPY . .
 # Expose the default Bokeh port
 EXPOSE 5006
 
-CMD ["bokeh", "serve", "--port", "5006", "--address", "0.0.0.0", "--allow-websocket-origin=*", "app/main.py"]
+CMD ["bokeh", "serve", "--port", "5006", "--address", "0.0.0.0", "--allow-websocket-origin=*", "app/pitchlink.py"]

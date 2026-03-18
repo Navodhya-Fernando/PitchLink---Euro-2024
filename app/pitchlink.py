@@ -515,34 +515,29 @@ sidebar = column(
     styles={"background": "linear-gradient(180deg, #121212 0%, #0a0a0a 100%)", "border-right": "1px solid rgba(255,255,255,0.05)", "overflow-y": "auto", "padding": "25px", "box-shadow": "5px 0 20px rgba(0,0,0,0.8)"}
 )
 
+# CSS Injector to guarantee dark mode and 100vh without Jinja2 template issues
+css_injector = Div(text="""<style>
+    html, body {
+        background-color: #121212 !important;
+        color: #ffffff !important;
+        margin: 0;
+        padding: 0;
+        height: 100vh !important;
+        width: 100vw !important;
+        overflow: hidden;
+    }
+</style>""", width=0, height=0, sizing_mode="fixed", visible=False)
+
 # Final layout
 layout = column(
+    css_injector,
     header, 
     row(sidebar, plot, sizing_mode="stretch_both"), 
     sizing_mode="stretch_both",
-    min_height=800,
-    min_width=1000
+    min_height=800
 )
 layout.name = "app_root"
 
 curdoc().add_root(layout)
 curdoc().title = "PITCHLINK EURO 2024"
 curdoc().theme = "dark_minimal"
-
-from jinja2 import Template
-template_string = """
-{% extends base %}
-{% block postamble %}
-  <style>
-    html, body {
-      width: 100%;
-      height: 100vh;
-      margin: 0;
-      padding: 0;
-      background-color: #121212;
-      overflow: hidden;
-    }
-  </style>
-{% endblock %}
-"""
-curdoc().template = Template(template_string)
