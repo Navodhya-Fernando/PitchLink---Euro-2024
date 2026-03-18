@@ -519,10 +519,30 @@ sidebar = column(
 layout = column(
     header, 
     row(sidebar, plot, sizing_mode="stretch_both"), 
-    sizing_mode="stretch_both"
+    sizing_mode="stretch_both",
+    min_height=800,
+    min_width=1000
 )
 layout.name = "app_root"
 
 curdoc().add_root(layout)
 curdoc().title = "PITCHLINK EURO 2024"
 curdoc().theme = "dark_minimal"
+
+from jinja2 import Template
+template_string = """
+{% extends base %}
+{% block postamble %}
+  <style>
+    html, body {
+      width: 100%;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      background-color: #121212;
+      overflow: hidden;
+    }
+  </style>
+{% endblock %}
+"""
+curdoc().template = Template(template_string)
